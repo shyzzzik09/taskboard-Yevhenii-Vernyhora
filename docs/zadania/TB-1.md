@@ -1,8 +1,9 @@
-# TB-1 czesc 1.
+# TB-1 czesc 1
 
 ## cel
+
 Przygotowujesz repozytorium projektu tak, jak robi się to w zespole: czytelna struktura, opis projektu,
-chroniona gałąźź main i praca przez pull request. 
+chroniona gałąźź main i praca przez pull request.
 
 ## co zrobic
 

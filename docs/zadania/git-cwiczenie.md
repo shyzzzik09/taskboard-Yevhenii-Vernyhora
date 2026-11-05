@@ -1,0 +1,9 @@
+# Git cwiczenie
+
+# Export z strony = https://learngitbranching.js.org/?locale=pl
+
+lgb:eyJhZHZhbmNlZDEiOnsicyI6MSwiYiI6MH0sImludHJvMSI6eyJzIjoxLCJiIjoxfSwiaW50cm8yIjp7InMiOjEsImIiOjB9LCJpbnRybzMiOnsicyI6MSwiYiI6MH0sImludHJvNCI6eyJzIjoxLCJiIjowfSwicmVtb3RlMSI6eyJzIjoxLCJiIjoxfSwicmVtb3RlMiI6eyJzIjoxLCJiIjoxfSwicmVtb3RlMyI6eyJzIjoxLCJiIjoxfSwicmVtb3RlNCI6eyJzIjoxLCJiIjowfSwicmVtb3RlNSI6eyJzIjoxLCJiIjoxfSwicmVtb3RlNiI6eyJzIjoxLCJiIjoxfSwicmVtb3RlNyI6eyJzIjoxLCJiIjowfX0=
+
+![alt text](image.png)
+
+![alt text](image-1.png)

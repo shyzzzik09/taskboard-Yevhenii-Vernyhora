@@ -11,7 +11,7 @@ Pomaga użytkownikom planować codzienną pracę.
 - HTML
 - CSS
 - JavaScript
-- PHP
+- MyPHP
 - MySQL
 
 ## Wymagane środowisko

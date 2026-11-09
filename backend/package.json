@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend to niewidoczna dla użytkownika część aplikacji internetowej, która odpowiada za logikę biznesową, przetwarzanie danych oraz zarządzanie bazą danych. Działa on po stronie serwera, odbierając i obsługując żądania przesyłane z front-endu oraz dbając o bezpieczeństwo całego systemu. Do najpopularniejszych technologii wykorzystywanych w backendzie należą m.in. Node.js, Python, Java, PHP czy różnego rodzaju bazy danych (np. PostgreSQL, MongoDB).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^18.0.10",
+    "express": "^5.3.0",
+    "mysql2": "^3.24.6"
+  }
+}

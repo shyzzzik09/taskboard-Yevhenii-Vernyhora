@@ -23,25 +23,25 @@ dozwolone wartośś ci status i priority , wartości domyśślne i pola soft del
 dane. Użytkowników z users.csv wstaw instrukcją INSERT (hashe skopiuj z pliku).
 4. Dodaj 10 zadańń testowych w różnych statusach i priorytetach, w tym 1–2 usunięte miękk
 5. Utwórz database/queries.sql z 10 zapytaniami, każde z komentarzem:
-1. zadania o priorytecie high według terminu;
-2. zadania po terminie i niezakończone;
-3. zadanie z nazwą tablicy i loginem osoby (JOIN trzech tabel);
-4. liczba zadań w każdym statusie dla wybranej tablicy (GROUP BY);
-5. usunięte zadania z loginem osoby, która je usunęła;
-6. użytkownicy bez żadnego zadania (LEFT JOIN);
-7. zadania z tytułem zawierającym słowo (LIKE);
-8. zmiana statusu zadania (UPDATE);
-9. soft delete zadania;
-10. trwałe usunięcie zadańń usuniętych ponad 30 dni temu (DELETE, konto administratora)
-6. Zrób kopię zapasową do database/backup/taskboard_RRRR-MM-DD.sql , odtwórz ją w bazie
+6. zadania o priorytecie high według terminu;
+7. zadania po terminie i niezakończone;
+8. zadanie z nazwą tablicy i loginem osoby (JOIN trzech tabel);
+9. liczba zadań w każdym statusie dla wybranej tablicy (GROUP BY);
+10. usunięte zadania z loginem osoby, która je usunęła;
+11. użytkownicy bez żadnego zadania (LEFT JOIN);
+12. zadania z tytułem zawierającym słowo (LIKE);
+13. zmiana statusu zadania (UPDATE);
+14. soft delete zadania;
+15. trwałe usunięcie zadańń usuniętych ponad 30 dni temu (DELETE, konto administratora)
+16. Zrób kopię zapasową do database/backup/taskboard_RRRR-MM-DD.sql , odtwórz ją w bazie
 taskboard_test i porównaj liczbę rekordów. Wynik zapisz w README.
-7. Ćwiczenie z debuggerem: otwórz materialy/bugs/index.html w przeglądarce (np. przez Live Server),
+17. Ćwiczenie z debuggerem: otwórz materialy/bugs/index.html w przeglądarce (np. przez Live Server),
  znajdźź 5 błędów w bugs.js za pomocą DevTools (F12) i przy każdej poprawce dopi
 komentarz, co było nie tak. Po poprawkach strona pokazuje „Wykonane: 2 z 5 (40%)”.
-8. Wklej treść tego zadania do docs/zadania/TB-2.md , potem pull request, zielony workflow i
+18. Wklej treść tego zadania do docs/zadania/TB-2.md , potem pull request, zielony workflow i
 scalenie przez merge commit.
 
-## Gotowe gdy 
+## Gotowe gdy
 
 -Skrypt odtwarza bazę bez błędów na czystym MySQL.
 -Tabela tasks ma klucze obce, dozwolone wartośś ci i pola soft delet

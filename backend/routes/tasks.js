@@ -57,14 +57,30 @@ router.get('/boards/:boardId/tasks', async (req, res, next) => {
       'SELECT id FROM boards WHERE id = ? AND isDeleted = 0',
       [req.params.boardId]
     );
+
     if (boards.length === 0) return res.sendStatus(404);
 
-    const [rows] = await pool.query(
-      'SELECT * FROM tasks WHERE boardId = ? AND isDeleted = 0',
-      [req.params.boardId]
-    );
+    let sql = 'SELECT * FROM tasks WHERE boardId = ? AND isDeleted = 0';
+    const params = [req.params.boardId];
+
+    const { priority } = req.query;
+
+    if (priority) {
+      if (!['low', 'medium', 'high'].includes(priority)) {
+        return res.status(400).json({
+          error: 'Nieprawidłowy priorytet'
+        });
+      }
+
+      sql += ' AND priority = ?';
+      params.push(priority);
+    }
+
+    const [rows] = await pool.query(sql, params);
     res.json(rows);
-  } catch (err) { next(err); }
+  } catch (err) {
+    next(err);
+  }
 });
 
 // Szczegoly zadania
@@ -130,11 +146,11 @@ router.put('/tasks/:id', async (req, res, next) => {
 // Soft delete zadania
 router.delete('/tasks/:id', async (req, res, next) => {
   try {
-    const [result] = await pool.query(
-      `UPDATE tasks SET isDeleted = 1, deletedAt = NOW(), deletedById = 1
-       WHERE id = ? AND isDeleted = 0`,
-      [req.params.id]
-    );
+      const [result] = await pool.query(
+      `UPDATE tasks SET isDeleted = 1, deletedAt = NOW(), deletedById = ?
+      WHERE id = ? AND isDeleted = 0`,
+      [req.session.userId, req.params.id]
+      );
     if (result.affectedRows === 0) return res.sendStatus(404);
     res.status(204).end();
   } catch (err) { next(err); }

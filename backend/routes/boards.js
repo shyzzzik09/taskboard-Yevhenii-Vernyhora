@@ -19,7 +19,7 @@ router.post('/',async (req, res, next) =>{
             if(name.length < 1 || name.length > 80){
                 return res.status(400).json({error:'Nazwa musi mieć od 1 do 80 znaków'});
             }
-            const ownerId  = 1; //do poniedzialku 3 na sztywno,potem z sesji
+            const ownerId = req.session.userId;
             const [result] = await pool.query(
                 'INSERT INTO boards (name, description, ownerId) VALUES (?, ?, ?)',
                 [name, req.body.description || null, ownerId]

@@ -57,14 +57,30 @@ router.get('/boards/:boardId/tasks', async (req, res, next) => {
       'SELECT id FROM boards WHERE id = ? AND isDeleted = 0',
       [req.params.boardId]
     );
+
     if (boards.length === 0) return res.sendStatus(404);
 
-    const [rows] = await pool.query(
-      'SELECT * FROM tasks WHERE boardId = ? AND isDeleted = 0',
-      [req.params.boardId]
-    );
+    let sql = 'SELECT * FROM tasks WHERE boardId = ? AND isDeleted = 0';
+    const params = [req.params.boardId];
+
+    const { priority } = req.query;
+
+    if (priority) {
+      if (!['low', 'medium', 'high'].includes(priority)) {
+        return res.status(400).json({
+          error: 'Nieprawidłowy priorytet'
+        });
+      }
+
+      sql += ' AND priority = ?';
+      params.push(priority);
+    }
+
+    const [rows] = await pool.query(sql, params);
     res.json(rows);
-  } catch (err) { next(err); }
+  } catch (err) {
+    next(err);
+  }
 });
 
 // Szczegoly zadania

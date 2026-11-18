@@ -130,11 +130,11 @@ router.put('/tasks/:id', async (req, res, next) => {
 // Soft delete zadania
 router.delete('/tasks/:id', async (req, res, next) => {
   try {
-    const [result] = await pool.query(
-      `UPDATE tasks SET isDeleted = 1, deletedAt = NOW(), deletedById = 1
-       WHERE id = ? AND isDeleted = 0`,
-      [req.params.id]
-    );
+      const [result] = await pool.query(
+      `UPDATE tasks SET isDeleted = 1, deletedAt = NOW(), deletedById = ?
+      WHERE id = ? AND isDeleted = 0`,
+      [req.session.userId, req.params.id]
+      );
     if (result.affectedRows === 0) return res.sendStatus(404);
     res.status(204).end();
   } catch (err) { next(err); }

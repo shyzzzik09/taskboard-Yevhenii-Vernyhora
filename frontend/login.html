@@ -24,6 +24,28 @@
         </form>
 
         <p id="message" role="status" aria-live="polite"></p>
+
+        <hr>
+
+        <h2>Rejestracja</h2>
+
+        <form id="registerForm">
+            <label for="registerLogin">Login:</label>
+            <input type="text" id="registerLogin" required>
+
+            <label for="registerPassword">Hasło:</label>
+            <input type="password" id="registerPassword" required>
+            <label for="firstName">Imię:</label>
+            <input type="text" id="firstName" required>
+
+            <label for="lastName">Nazwisko:</label>
+            <input type="text" id="lastName" required>
+
+            <button type="submit">Zarejestruj się</button>
+        </form>
+
+        <p id="registerMessage" role="status" aria-live="polite"></p>
+
     </main>
     <script src="login.js"></script>
 </body>

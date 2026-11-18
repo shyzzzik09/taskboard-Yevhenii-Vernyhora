@@ -26,3 +26,33 @@ form.addEventListener('submit', async (event) => {
         message.textContent = 'Błąd połączenia z serwerem';
     }
 });
+
+document.getElementById('registerForm').addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const login = document.getElementById('registerLogin').value;
+    const password = document.getElementById('registerPassword').value;
+    const message = document.getElementById('registerMessage'); 
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+
+    try {
+        const response = await fetch('/api/auth/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ login, password, firstName, lastName })
+        });
+
+        if (response.ok) {
+            message.textContent = 'Rejestracja zakończona sukcesem! Możesz się zalogować.';
+            document.getElementById('registerForm').reset();
+        } else {
+            const data = await response.json();
+            message.textContent = data.error || 'Nie udało się zarejestrować.';
+        }
+    } catch (error) {
+        message.textContent = 'Błąd połączenia z serwerem.';
+    }
+});

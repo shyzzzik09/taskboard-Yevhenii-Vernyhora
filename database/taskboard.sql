@@ -11,6 +11,10 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+DROP DATABASE IF EXISTS taskboard;
+CREATE DATABASE taskboard CHARACTER SET utf8mb4 COLLATE utf8mb4_polish_ci;
+USE taskboard;
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -81,7 +85,9 @@ INSERT INTO `tasks` (`id`, `title`, `description`, `status`, `priority`, `deadli
 (7, 'Dodać zadania', 'Utworzyć tabelę tasks', 'todo', 'medium', '2026-11-20', 1, 2, '2026-11-10 14:36:41', 0, NULL, NULL),
 (8, 'Poprawić formularz', 'Sprawdzić pola', 'todo', 'low', '2026-11-22', 1, 3, '2026-11-10 14:36:41', 0, NULL, NULL),
 (9, 'Przetestować API', 'Sprawdzić endpointy', 'in_progress', 'high', '2026-11-24', 1, 4, '2026-11-10 14:36:41', 0, NULL, NULL),
-(10, 'Przygotować prezentację', 'Pokazać projekt', 'done', 'medium', '2026-11-26', 1, 5, '2026-11-10 14:36:41', 0, NULL, NULL);
+(10, 'Przygotować prezentację', 'Pokazać projekt', 'done', 'medium', '2026-11-26', 1, 5, '2026-11-10 14:36:41', 0, NULL, NULL),
+(11, 'Stare zadanie', 'Usunięte ponad 30 dni temu', 'done', 'low', '2026-09-20', 1, 1, '2026-09-15 10:00:00', 1, '2026-10-01 12:00:00', 1),
+(12, 'Zadanie testowe', 'Niedawno usunięte zadanie', 'todo', 'medium', '2026-11-15', 1, 1, '2026-11-10 10:00:00', 1, '2026-11-15 12:00:00', 1);
 
 -- --------------------------------------------------------
 

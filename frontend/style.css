@@ -1,11 +1,122 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 20px;
-    background-color: #f4f4f4;
+    padding: 0;
+    background-color: #f3f5f8;
+    color: #14212e;
 }
 
 h1 {
     text-align: center;
     color: #222;
+}
+
+.btn-primary {
+    background-color: #117c73;
+    border-color: #117c73;
+}
+
+.btn-primary:hover {
+    background-color: #0d665f;
+    border-color: #0d665f;
+}
+
+.btn-outline-primary {
+    color: #117c73;
+    border-color: #117c73;
+}
+
+.btn-outline-primary:hover {
+    background-color: #117c73;
+    border-color: #117c73;
+    color: white;
+}
+
+header.navbar {
+    background-color: #14212e !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header.navbar h1 {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+}
+
+header.navbar .btn {
+    margin: 0 5px;
+}
+
+/* Kolumny zadań */
+#todo {
+    background-color: #e8eef6;
+}
+
+#in_progress {
+    background-color: #fff2dc;
+}
+
+#done {
+    background-color: #e2f3ea;
+}
+
+.task-column {
+    padding: 12px;
+    border-radius: 12px;
+    min-height: 400px;
+}
+
+.task-column h3 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.todo-column {
+    background-color: #e8eef6;
+}
+
+.progress-column {
+    background-color: #fff2dc;
+}
+
+.done-column {
+    background-color: #e2f3ea;
+}
+
+.task-column .card {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 8px;
+    padding: 12px;
+    margin-bottom: 8px;
+}
+
+.task-column .card h5,
+.task-column .card .card-title {
+    width: 100%;
+    margin: 0;
+}
+
+.task-column .card .btn {
+    width: auto;
+}
+
+#boardsList .card {
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    transition: 0.2s;
+}
+
+#boardsList .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12) !important;
+}
+
+#boardsList .card p {
+    line-height: 1.5;
 }

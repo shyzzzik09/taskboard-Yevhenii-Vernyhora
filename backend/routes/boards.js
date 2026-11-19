@@ -30,6 +30,34 @@ router.post('/',async (req, res, next) =>{
     }
 });
 
+router.put('/:id', async (req, res, next) => {
+  try {
+    const name = (req.body.name || '').trim();
+    const description = req.body.description || null;
+
+    if (name.length < 1 || name.length > 80) {
+      return res.status(400).json({
+        error: 'Nazwa musi mieć od 1 do 80 znaków'
+      });
+    }
+
+    const [result] = await pool.query(
+      'UPDATE boards SET name = ?, description = ? WHERE id = ? AND isDeleted = 0',
+      [name, description, req.params.id]
+    );
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({
+        error: 'Nie znaleziono tablicy'
+      });
+    }
+
+    res.json({ message: 'Tablica zaktualizowana' });
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.delete('/:id',async (req, res, next) => {
     try{
         const [result] = await pool.query(

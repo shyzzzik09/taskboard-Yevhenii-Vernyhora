@@ -63,18 +63,36 @@ router.get('/boards/:boardId/tasks', async (req, res, next) => {
     let sql = 'SELECT * FROM tasks WHERE boardId = ? AND isDeleted = 0';
     const params = [req.params.boardId];
 
-    const { priority } = req.query;
+   const { priority, assigneeId, q } = req.query;
 
-    if (priority) {
-      if (!['low', 'medium', 'high'].includes(priority)) {
-        return res.status(400).json({
-          error: 'Nieprawidłowy priorytet'
-        });
-      }
+if (priority) {
+  if (!['low', 'medium', 'high'].includes(priority)) {
+    return res.status(400).json({
+      error: 'Nieprawidlowy priorytet'
+    });
+  }
 
-      sql += ' AND priority = ?';
-      params.push(priority);
-    }
+  sql += ' AND priority = ?';
+  params.push(priority);
+}
+
+if (assigneeId !== undefined && assigneeId !== '') {
+  const id = Number(assigneeId);
+
+  if (!Number.isSafeInteger(id) || id < 1) {
+    return res.status(400).json({
+      error: 'Nieprawidlowa osoba'
+    });
+  }
+
+  sql += ' AND assigneeId = ?';
+  params.push(id);
+}
+
+if (q) {
+  sql += ' AND title LIKE ?';
+  params.push(`%${q}%`);
+}
 
     const [rows] = await pool.query(sql, params);
     res.json(rows);

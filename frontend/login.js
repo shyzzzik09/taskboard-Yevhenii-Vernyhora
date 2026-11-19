@@ -36,6 +36,26 @@ document.getElementById('registerForm').addEventListener('submit', async (event)
     const firstName = document.getElementById('firstName').value;
     const lastName = document.getElementById('lastName').value;
 
+    const passwordInput = document.getElementById('registerPassword');
+    const confirmPasswordInput = document.getElementById('confirmPassword');
+    const confirmPassword = confirmPasswordInput.value;
+
+    confirmPasswordInput.classList.remove('is-invalid');
+
+    passwordInput.classList.remove('is-invalid');
+    message.textContent = '';
+
+    if (password.length < 8) {
+        passwordInput.classList.add('is-invalid');
+        message.textContent = '';
+        return;
+    }
+    if (password !== confirmPassword) {
+    confirmPasswordInput.classList.add('is-invalid');
+    message.textContent = '';
+    return;
+    }   
+
     try {
         const response = await fetch('/api/auth/register', {
             method: 'POST',

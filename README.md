@@ -11,7 +11,9 @@ Pomaga użytkownikom planować codzienną pracę.
 - HTML
 - CSS
 - JavaScript
-- MyPHP
+- Bootstrap 5
+- Node.js
+- Express
 - MySQL
 
 ## Wymagane środowisko
@@ -23,8 +25,50 @@ Pomaga użytkownikom planować codzienną pracę.
 
 ## Uruchomienie
 
-Projekt jest obecnie w fazie przygotowania.
-Instrukcja uruchomienia zostanie uzupełniona w kolejnych etapach.
+### 1. Wymagania
+
+Do uruchomienia aplikacji potrzebne są:
+
+- Node.js i npm
+- XAMPP (MySQL / MariaDB)
+- Przeglądarka internetowa
+
+### 2. Przygotowanie bazy danych
+
+1. Uruchom XAMPP i włącz MySQL.
+2. Otwórz phpMyAdmin.
+3. Utwórz bazę danych `taskboard`.
+4. Zaimportuj plik `database/taskboard.sql`.
+
+### 3. Konfiguracja aplikacji
+
+1. Otwórz projekt w Visual Studio Code.
+2. Skopiuj plik `.env.example` do `.env`.
+3. Uzupełnij dane połączenia z bazą danych.
+
+### 4. Uruchomienie serwera
+
+Otwórz terminal w folderze projektu i wykonaj:
+
+```bash
+cd backend
+npm install
+npm start
+```
+
+Jeżeli plik `package.json` nie zawiera skryptu `start`, uruchom serwer zgodnie z jego konfiguracją.
+
+### 5. Otwarcie aplikacji
+
+Po uruchomieniu serwera otwórz w przeglądarce:
+
+http://localhost:3000/login.html
+
+Zarejestruj nowe konto lub zaloguj się, aby korzystać z aplikacji TaskBoard.
+
+Dostępność serwera można sprawdzić pod adresem:
+
+http://localhost:3000/api/health
 
 ## Struktura projektu
 

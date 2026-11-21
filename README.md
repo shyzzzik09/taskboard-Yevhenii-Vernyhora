@@ -102,6 +102,12 @@ Usunięte zadania pozostają w bazie, ale nie są wyświetlane przez API.
 Kopia zapasowa została przywrócona do bazy `taskboard_test`.
 Porównano liczbę rekordów w obu bazach i wyniki były zgodne.
 
+Aplikacja powinna korzystać z konta `taskboard_app`.
+Konta i uprawnienia znajdują się w pliku `database/konta.sql`.
+
+Instrukcja tworzenia i odtwarzania kopii zapasowej
+znajduje się w [dokumentacji bazy danych](database/README.md).
+
 ## API zadań
 
 Backend działa na Node.js i Express, na porcie 3000.

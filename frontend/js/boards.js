@@ -19,7 +19,6 @@ async function loadBoards() {
         const boards = await response.json();
         const usersResponse = await fetch('/api/users');
         const users = await usersResponse.json();
-        console.log(boards);
         boardsList.replaceChildren();
         if (boards.length === 0) {
           boardsList.innerHTML = `

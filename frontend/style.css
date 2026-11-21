@@ -51,17 +51,6 @@ header.navbar .btn {
 }
 
 /* Kolumny zadań */
-#todo {
-    background-color: #e8eef6;
-}
-
-#in_progress {
-    background-color: #fff2dc;
-}
-
-#done {
-    background-color: #e2f3ea;
-}
 
 .task-column {
     padding: 12px;

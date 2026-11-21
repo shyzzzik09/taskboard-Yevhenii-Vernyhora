@@ -14,17 +14,18 @@ FROM tasks
 JOIN boards ON tasks.boardId = boards.id
 LEFT JOIN users ON tasks.assigneeId = users.id;
 
--- 4. Liczba zadań według statusu
+-- 4. Liczba zadan w kazdym statusie dla wybranej tablicy
 SELECT status, COUNT(*) AS liczba
 FROM tasks
+WHERE boardId = 1
+AND isDeleted = 0
 GROUP BY status;
 
--- 5. Usunięcie zadania
--- Najpierw sprawdź, które zadanie usuwasz
-SELECT * FROM tasks WHERE id = 10;
-
-DELETE FROM tasks
-WHERE id = 10;
+-- 5. Usuniete zadania z loginem osoby, ktora je usunela
+SELECT tasks.title, users.login
+FROM tasks
+JOIN users ON tasks.deletedById = users.id
+WHERE tasks.isDeleted = 1;
 
 -- 6. Użytkownicy bez żadnego aktywnego zadania
 SELECT users.login

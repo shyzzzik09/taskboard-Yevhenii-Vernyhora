@@ -24,6 +24,12 @@ app.use('/api', requireAuth, require('./routes/tasks'));
 
 app.use(express.static(path.join(__dirname, '..', 'frontend')));
 
+app.use((err, req, res, next) => {
+    res.status(500).json({
+        error: 'Wewnętrzny błąd serwera'
+    });
+});
+
 app.listen(3000, () => {
     console.log('Server: http://localhost:3000');
 });

@@ -1,3 +1,31 @@
-# backend
+# Backend TaskBoard
 
-Backend to niewidoczna dla użytkownika część aplikacji internetowej, która odpowiada za logikę biznesową, przetwarzanie danych oraz zarządzanie bazą danych. Działa on po stronie serwera, odbierając i obsługując żądania przesyłane z front-endu oraz dbając o bezpieczeństwo całego systemu. Do najpopularniejszych technologii wykorzystywanych w backendzie należą m.in. Node.js, Python, Java, PHP czy różnego rodzaju bazy danych (np. PostgreSQL, MongoDB).
+Backend aplikacji został wykonany w Node.js i Express.
+Korzysta z bazy danych MySQL / MariaDB.
+
+## Pliki i katalogi
+
+- `server.js` – konfiguracja i uruchomienie serwera.
+- `db.js` – połączenie z bazą danych.
+- `routes/auth.js` – logowanie, rejestracja i wylogowanie.
+- `routes/users.js` – pobieranie listy użytkowników.
+- `routes/boards.js` – zarządzanie tablicami.
+- `routes/tasks.js` – zarządzanie zadaniami i filtrowanie.
+- `middleware/auth.js` – sprawdzanie sesji użytkownika.
+- `package.json` – zależności i skrypty projektu.
+
+## Uruchomienie
+
+W terminalu, w głównym katalogu projektu, wykonaj:
+
+```bash
+cd backend
+npm install
+node server.js
+```
+
+Polecenie `npm install` jest wymagane przy pierwszym uruchomieniu.
+
+Serwer działa pod adresem http://localhost:3000.
+
+Alternatywnie serwer można uruchomić poleceniem `npm start`.

@@ -70,8 +70,6 @@ async function loadTasks() {
             assigneeSelect.appendChild(option);
         });
 
-        console.log(tasks);
-
         todoList.replaceChildren();
         progressList.replaceChildren();
         doneList.replaceChildren();
@@ -137,12 +135,18 @@ async function loadTasks() {
             card.appendChild(person);
 
             const editBtn = document.createElement('button');
-            editBtn.textContent = 'Edytuj';
+            editBtn.textContent = 'Szczegóły';
             editBtn.className = 'btn btn-outline-secondary btn-sm';
 
             editBtn.addEventListener('click', () => {
                 editingTask = task;
-                document.querySelector('#taskModal .modal-title').textContent = 'Edytuj zadanie';
+                document.querySelector('#taskModal .modal-title').textContent =
+                    `Zadanie: ${task.title}`;
+
+                document.getElementById('taskCreatedAt').textContent =
+                    task.createdAt
+                        ? `Utworzono: ${new Date(task.createdAt).toLocaleDateString('pl-PL')}`
+                        : '';
                 document.getElementById('taskTitle').value = task.title;
                 document.getElementById('taskDescription').value = task.description || '';
                 document.getElementById('taskStatus').value = task.status || 'todo';
@@ -185,16 +189,19 @@ async function loadTasks() {
             statusBtn.className = 'btn btn-outline-primary btn-sm';
 
                 if (task.status === 'todo') {
-                    statusBtn.textContent = 'Rozpocznij';
+                    statusBtn.textContent = 'Przenieś do: W trakcie';
                 } else if (task.status === 'in_progress') {
-                    statusBtn.textContent = 'Zakończ';
+                    statusBtn.textContent = 'Przenieś do: Gotowe';
                 } else {
-                    statusBtn.textContent = 'Zrobione';
-                    statusBtn.disabled = true;
-                }   
+                    statusBtn.textContent = 'Otwórz ponownie';
+                }  
 
         statusBtn.addEventListener('click', async () => {
-            const newStatus = task.status === 'todo' ? 'in_progress' : 'done';
+            const newStatus = task.status === 'todo'
+                ? 'in_progress'
+                : task.status === 'in_progress'
+                    ? 'done'
+                    : 'todo';
 
             const response = await fetch(`/api/tasks/${task.id}`, {
                 method: 'PUT',
@@ -296,7 +303,11 @@ document.getElementById('taskForm').addEventListener('submit', async (event) => 
 document.getElementById('addTaskBtn').addEventListener('click', () => {
     editingTask = null;
     document.getElementById('taskForm').reset();
-    document.querySelector('#taskModal .modal-title').textContent = 'Dodaj zadanie';
+    document.getElementById('taskCreatedAt').textContent = '';
+    document.getElementById('taskTitle').classList.remove('is-invalid');
+    document.getElementById('taskPriority').value = 'medium';
+    document.querySelector('#taskModal .modal-title').textContent =
+        'Dodaj zadanie';
 });
 
 document.getElementById('filterPriority').addEventListener('change', loadTasks);

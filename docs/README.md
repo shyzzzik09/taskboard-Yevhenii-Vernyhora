@@ -1,3 +1,9 @@
-# dokumentacja
+# Dokumentacja TaskBoard
 
-Folder `docs` to dedykowane miejsce w strukturze projektu służące do gromadzenia całej dokumentacji technicznej, instrukcji wdrożeniowych oraz specyfikacji. Ułatwia on nowym członkom zespołu szybkie zrozumienie systemu, a także stanowi centralne źródło aktualnej wiedzy na temat działania i architektury aplikacji. Najczęściej zawiera pliki tekstowe (np. w formacie Markdown), schematy układu oraz opisy interfejsów API.
+Katalog zawiera dokumentację projektu TaskBoard.
+
+- `api.md` – dokumentacja endpointów API.
+- `testy.md` – przypadki testowe aplikacji.
+- `dane.md` – opis danych projektu.
+- `zadania/` – treści zadań realizowanych podczas praktyk.
+- `postman/` – kolekcja zapytań do testowania API.
